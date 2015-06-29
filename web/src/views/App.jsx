@@ -1,16 +1,20 @@
 var React = require('react')
 var EventEmitter = require('eventemitter2').EventEmitter2
 
+var Browser = require('./Browser.jsx')
+
 var App = React.createClass({
   propTypes: {
     emitter: React.PropTypes.instanceOf(EventEmitter).isRequired
   },
-  getInitialState: {
-    fileData: null
+  getInitialState: function() {
+    return {
+      fileData: null
+    }
   },
   componentDidMount: function() {
     var self = this
-    emitter.on('openFile', function(data) {
+    this.props.emitter.on('openFile', function(data) {
       self.setState({fileData: data})
     })
   },
@@ -19,7 +23,7 @@ var App = React.createClass({
   },
   render: function() {
     if (this.state.fileData) {
-      
+      return <Browser {...this.state}/>
     } else {
       return <div className="empty-message">
         <div className="upload-holder">
@@ -32,4 +36,4 @@ var App = React.createClass({
   }
 });
 
-module.exports = UploadForm;
+module.exports = App;

@@ -10,17 +10,17 @@ var emitter = new EventEmitter({
 // main react view
 var App = require('../views/App.jsx')
 
-var registerHandler = function(name) {
+var registerHandler = function(b, name) {
   b.registerHandler(name, function(data, callback) {
     emitter.emit(name, data)
-  }
+  })
 }
 
 bridge(function(b){
-  registerHandler('openFile')
+  registerHandler(b, 'openFile')
 
   emitter.on('*', function() {
-    var args = Array.protptype.slice.call(arguments)
+    var args = Array.prototype.slice.call(arguments)
     args.unshift(this.event)
     b.send.apply(b, args)
   })

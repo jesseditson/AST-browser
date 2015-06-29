@@ -3,7 +3,8 @@
   "version": "1.0.0",
   "description": "",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "gulp start"
   },
   "author": "Jesse Ditson <jesse.ditson@gmail.com>",
   "license": "ISC",
@@ -24,7 +25,11 @@
     "vinyl-source-stream": "^1.0.0"
   },
   "dependencies": {
+    "acorn": "^2.0.4",
+    "acorn-jsx": "^2.0.0",
+    "d3": "^3.5.5",
     "eventemitter2": "^0.4.14",
+    "falafel": "jesseditson/node-falafel#custom_parser",
     "react": "^0.12.2",
     "superagent": "^0.21.0"
   }

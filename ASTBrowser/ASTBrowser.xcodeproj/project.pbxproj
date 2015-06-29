@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		F348FECB1B4209E000BE7032 /* img in Resources */ = {isa = PBXBuildFile; fileRef = F348FECA1B4209E000BE7032 /* img */; };
 		F360BCC01B3E0766005E0E63 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F360BCBF1B3E0766005E0E63 /* AppDelegate.swift */; };
 		F360BCC21B3E0766005E0E63 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F360BCC11B3E0766005E0E63 /* ViewController.swift */; };
 		F360BCC41B3E0766005E0E63 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F360BCC31B3E0766005E0E63 /* Images.xcassets */; };
@@ -31,6 +32,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		F348FECA1B4209E000BE7032 /* img */ = {isa = PBXFileReference; lastKnownFileType = folder; name = img; path = ../web/build/img; sourceTree = "<group>"; };
 		F360BCBA1B3E0766005E0E63 /* ASTBrowser.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ASTBrowser.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F360BCBE1B3E0766005E0E63 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F360BCBF1B3E0766005E0E63 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -149,6 +151,7 @@
 		F360BCF51B41AC27005E0E63 /* client */ = {
 			isa = PBXGroup;
 			children = (
+				F348FECA1B4209E000BE7032 /* img */,
 				F360BCF61B41AC32005E0E63 /* index.html */,
 				F360BCF71B41AC32005E0E63 /* javascripts */,
 				F360BCF81B41AC32005E0E63 /* styles */,
@@ -238,6 +241,7 @@
 			files = (
 				F360BCC41B3E0766005E0E63 /* Images.xcassets in Resources */,
 				F360BCF91B41AC32005E0E63 /* index.html in Resources */,
+				F348FECB1B4209E000BE7032 /* img in Resources */,
 				F360BCC71B3E0766005E0E63 /* Main.storyboard in Resources */,
 				F360BCFA1B41AC32005E0E63 /* javascripts in Resources */,
 				F360BCFB1B41AC32005E0E63 /* styles in Resources */,
@@ -455,6 +459,7 @@
 				F360BCD81B3E0766005E0E63 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		F360BCD91B3E0766005E0E63 /* Build configuration list for PBXNativeTarget "ASTBrowserTests" */ = {
 			isa = XCConfigurationList;
@@ -463,6 +468,7 @@
 				F360BCDB1B3E0766005E0E63 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
