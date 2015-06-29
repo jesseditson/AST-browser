@@ -1,14 +1,14 @@
 var React = require('react')
 var bridge = require('./osx-bridge')
-var EventEmitter = require('events').EventEmitter
+var EventEmitter = require('eventemitter2').EventEmitter2
 
 // main emitter
-var emitter = new EventEmitter();
+var emitter = new EventEmitter({
+  wildcard: true
+})
 
-// react views
-var UploadForm = require('../views/UploadForm.jsx')
-
-var uploadFormNode = document.getElementById('upload-form')
+// main react view
+var App = require('../views/App.jsx')
 
 var registerHandler = function(name) {
   b.registerHandler(name, function(data, callback) {
@@ -18,6 +18,12 @@ var registerHandler = function(name) {
 
 bridge(function(b){
   registerHandler('openFile')
+
+  emitter.on('*', function() {
+    var args = Array.protptype.slice.call(arguments)
+    args.unshift(this.event)
+    b.send.apply(b, args)
+  })
 })
 
 var props = {
@@ -25,4 +31,4 @@ var props = {
 }
 
 // set up our views
-React.render(<UploadForm {...props}/>, uploadFormNode)
+React.render(<App {...props}/>, document.getElementById('main-mount'))
