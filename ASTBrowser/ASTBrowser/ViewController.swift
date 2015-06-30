@@ -17,7 +17,7 @@ class ViewController: NSViewController {
         super.viewDidLoad()
         
         self.bridge = WebViewJavascriptBridge(forWebView: self.webView, handler: { (data: AnyObject?, responseCallback: WVJBResponseCallback?) -> Void in
-            print("javascript data: \(data)")
+            println("javascript data: \(data)")
             if let string = data as? String {
                 if string == "upload" {
                     self.showFileChooser()
@@ -26,6 +26,10 @@ class ViewController: NSViewController {
         })
         
         self.initWebViewContent()
+    }
+    
+    func openDocument(sender: AnyObject?) {
+        showFileChooser()
     }
     
     func openFile(text: NSString?) {

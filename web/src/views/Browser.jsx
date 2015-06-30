@@ -2,6 +2,8 @@ var React = require('react')
 var d3 = require('d3')
 var acorn = require('acorn-jsx')
 
+var src
+
 var Browser = React.createClass({
   propTypes: {
     fileData: React.PropTypes.string.isRequired
@@ -11,8 +13,17 @@ var Browser = React.createClass({
       ast: parseFile(this.props.fileData)
     }
   },
+  componentWillReceiveProps: function(props) {
+    initGraph(this.state.ast, props.fileData)
+    this.setState({
+      ast: parseFile(props.fileData)
+    })
+  },
   componentDidMount: function() {
     initGraph(this.state.ast, this.props.fileData)
+    update.call(this, this.state.ast)
+  },
+  componentDidUpdate: function() {
     update.call(this, this.state.ast)
   },
   closeModal: function(e) {
@@ -70,7 +81,7 @@ var barHeight = 20
 var barWidth = width * .8
 var duration = 400
 var i = 0
-var svg, diagonal, tree, tooltip, root, src
+var svg, diagonal, tree, tooltip, root
 
 function initGraph(data, raw) {
   tree = d3.layout.tree()
@@ -79,17 +90,13 @@ function initGraph(data, raw) {
   diagonal = d3.svg.diagonal()
       .projection(function(d) { return [d.y, d.x]; });
 
+  d3.select("#browser").select("svg").remove()
+
   svg = d3.select("#browser").append("svg")
       .attr("width", width + margin.left + margin.right)
     .append("g")
       .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
-  tooltip = d3.select("#browser").append("div")
-    .attr("class", "tooltip")
-    .style("opacity", 0);
-
-  data.x0 = 0
-  data.y0 = 0
   root = data
   src = raw
 }
@@ -110,6 +117,8 @@ function color(d) {
 }
 
 function update(source) {
+  if (isNaN(source.x0)) source.x0 = 0
+  if (isNaN(source.y0)) source.y0 = 0
   // Compute the flattened node list. TODO use d3.layout.hierarchy.
   var nodes = tree.nodes(root);
 
